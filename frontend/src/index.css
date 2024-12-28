@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+:root {
+    --primary-color: #213696; 
+    --secondary-color:#c5d4d1; 
+    --h2color-color: #000f28;
+    --text-color: #676767;
+
+
+}
+    
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Outfit", sans-serif;
+  }
+  .small_banner{
+    height: 200px;
+
+  }
+  a{
+    text-decoration: none;
+    color: inherit;
+    line-height: 1;
+    cursor: pointer;
+  }
+ .container{
+  padding-left: 5%;
+  padding-right: 5%;
+ }
+ .btn{
+  background-color: white;
+  color: var(--primary-color);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 22px;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+ }
+ .btn-2{
+  background-color: transparent;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 22px;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid white;
+  outline: 0;
+ }
+ .btn-2:hover {
+  background-color: white;
+  color: #213696;
+}
+ .btn-trans{
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  border: 1px solid white;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 22px;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: 0;
+ }
+ .btn-trans:hover{
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+  color: var(--primary-color);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 22px;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: 0;
+ }
+
+ @media (max-width: 1200px) {
+  .container{
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .btn{
+    padding: 14px 22px;
+  }
+  
+ }

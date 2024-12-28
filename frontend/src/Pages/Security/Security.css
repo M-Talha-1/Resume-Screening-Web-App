@@ -1,0 +1,80 @@
+/* Security Page Styles */
+.security-page {
+    padding: 2rem;
+    font-family: "Outfit", sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  .security-banner {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    border-radius: 8px;
+  }
+  
+  .security-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .security-description {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  /* Security Content */
+  .security-content {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .security-content h2 {
+    color: var(--h2color-color);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .security-content p {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  .security-content ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .security-content ul li {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .security-title {
+      font-size: 2rem;
+    }
+  
+    .security-description {
+      font-size: 1rem;
+    }
+  
+    .security-content h2 {
+      font-size: 1.5rem;
+    }
+  
+    .security-content p,
+    .security-content ul li {
+      font-size: 0.9rem;
+    }
+  }
+  

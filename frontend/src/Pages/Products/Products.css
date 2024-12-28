@@ -1,0 +1,119 @@
+/* Product Page Styles */
+.product-page {
+    width: 100%;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    background-color: #081d7c;
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-top: 50px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-description {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* Product Section */
+  .product-section {
+    padding: 3rem 1rem;
+    margin-bottom: 3.5rem;
+
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .product-card {
+    background-color: white;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  .product-title {
+    color: var(--h2color-color);
+    font-size: 1.5rem;
+    margin: 1rem 0 0.5rem;
+  }
+  
+  .product-description {
+    color: var(--text-color);
+    font-size: 1rem;
+    padding: 0 1rem 1.5rem;
+    line-height: 1.5;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+  
+    .hero-description {
+      font-size: 1rem;
+    }
+  
+    .product-grid {
+      gap: 1.5rem;
+    }
+  
+    .product-title {
+      font-size: 1.3rem;
+    }
+  
+    .product-description {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 1.8rem;
+    }
+  
+    .hero-description {
+      font-size: 0.9rem;
+    }
+  
+    .product-card {
+      border-radius: 5px;
+    }
+  
+    .product-title {
+      font-size: 1.2rem;
+    }
+  
+    .product-description {
+      font-size: 0.85rem;
+      padding: 0 0.8rem 1rem;
+    }
+  }
+  

@@ -1,0 +1,86 @@
+.register-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Set a max width for better appearance */
+    margin: 50px auto; /* Center the form on the page */
+    padding: 20px; /* Padding for spacing inside the container */
+
+}
+
+.register-title {
+    color: #213696; /* Your primary color */
+    text-align: center; /* Center the heading */
+}
+
+.register-description {
+    text-align: center; /* Center description text */
+}
+
+.register-label {
+    display: block; /* Stack labels above inputs */
+    margin-bottom: 5px; /* Space between label and input */
+    font-weight: bold; /* Bold labels for better visibility */
+    color: #333; /* Dark color for labels */
+}
+
+.register-input {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Padding for input fields */
+    margin-bottom: 20px; /* Space between inputs */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size for inputs */
+}
+
+.register-input:focus {
+    border-color: #213696; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.register-button {
+    background-color: #213696; /* Primary color for button */
+    color: white; /* White text on button */
+    padding: 10px; /* Padding inside button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size for button */
+    width: 100%; /* Full width for button */
+}
+
+.register-button:hover {
+    background-color: #1a2874; /* Darker shade on hover */
+}
+
+.register-divider {
+    border: none; /* Remove default border */
+    border-top: 1px solid #ccc; /* Light gray top border */
+    margin: 20px 0; /* Space around the hr */
+}
+
+.register-agreement {
+    text-align: center; /* Center the agreement text */
+    margin: 20px 0; /* Space above and below agreement text */
+}
+
+.register-signin {
+    text-align: center; /* Center the sign-in text */
+    margin-top: 20px; /* Space above sign-in text */
+}
+
+.register-signin a {
+    color: #213696; /* Link color matches primary color */
+    text-decoration: none; /* Remove underline */
+}
+
+.register-signin a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+.register-signin{
+    margin-bottom: 40px;
+}
+.padding{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}

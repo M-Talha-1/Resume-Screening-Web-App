@@ -1,0 +1,43 @@
+.Section{
+    margin: 100px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+.Sectionleft{
+    flex-basis: 40%;
+    position: relative;
+}
+.Sectionright{
+    flex-basis: 50%;
+}
+.Sectionimg2{
+  width: 100%;
+  border-radius: 10px;
+}
+/* .playicon{
+    width: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+} */
+.Section h3{
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--primary-color);
+}
+.Section h2{
+    font-size: 35px;
+    color: var(--h2color-color);
+    margin: 10px 0;
+    max-width: 550px;
+}
+.Section p{
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-size: 17px;
+    max-width: 550px;
+
+}

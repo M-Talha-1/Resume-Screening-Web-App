@@ -1,0 +1,114 @@
+/* General Styles */
+.faqs-page {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  
+  .faqs-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  /* Left Section */
+  .faqs-left {
+    flex: 1;
+    max-width: 40%;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .faqs-left h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  
+  .faqs-left p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* Right Section */
+  .faqs-right {
+    flex: 2;
+    max-width: 60%;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* FAQ Item */
+  .faq-item {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--secondary-color);
+    padding: 0.5rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .faq-item.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 5px;
+    padding: 0.5rem;
+  }
+  
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-question h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--h2color-color);
+  }
+  
+  .faq-item.active h3 {
+    color: white;
+  }
+  
+  /* FAQ Answer */
+  .faq-answer {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+  
+  .faq-item.active .faq-answer {
+    color: white;
+  }
+  
+  /* FAQ Icon */
+  .faq-icon {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-icon.rotate {
+    transform: rotate(180deg);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .faqs-container {
+      flex-direction: column;
+    }
+  
+    .faqs-left,
+    .faqs-right {
+      max-width: 100%;
+    }
+  }
+  
