@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  BsCart3,
   BsGrid1X2Fill,
   BsFillArchiveFill,
   BsFillGrid3X3GapFill,
   BsPeopleFill,
-  BsListCheck,
   BsMenuButtonWideFill,
   BsFillGearFill,
   BsFillBellFill,
@@ -28,31 +26,46 @@ import "./Dashboard.css";
 
 function Dashboard() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
-
-  const handleSidebarToggle = () => {
-    setOpenSidebarToggle(!openSidebarToggle);
-  };
-
-  const data = [
-    { name: "Jan", Job_View: 2000, Job_Applied: 2400, amt: 2400 },
-    { name: "Feb", Job_View: 3000, Job_Applied: 2500, amt: 2210 },
-    { name: "Mar", Job_View: 2000, Job_Applied: 9800, amt: 2290 },
-    { name: "Apr", Job_View: 2780, Job_Applied: 3908, amt: 2000 },
-    { name: "May", Job_View: 1890, Job_Applied: 4800, amt: 2181 },
-    { name: "jun", Job_View: 2390, Job_Applied: 3800, amt: 2500 },
-    { name: "Jul", Job_View: 3490, Job_Applied: 4300, amt: 2100 },
-    { name: "Aug", Job_View: 3490, Job_Applied: 4300, amt: 2100 },
-    { name: "Spt", Job_View: 3490, Job_Applied: 4300, amt: 2100 },
-    { name: "Oct", Job_View: 3490, Job_Applied: 4300, amt: 2100 },
-    { name: "Nov", Job_View: 3490, Job_Applied: 4300, amt: 2100 },
-    { name: "Dec", Job_View: 3490, Job_Applied: 4300, amt: 2100 },
-  ];
-
-  const progressValues = {
+  const [jobData, setJobData] = useState([]);
+  const [trendData, setTrendData] = useState([]);
+  const [progressValues, setProgressValues] = useState({
     applications: 75,
     rejected: 20,
     shortlisted: 50,
     alerts: 30,
+  });
+
+  // Dummy fetch simulation for job and trend data
+  useEffect(() => {
+    const fetchJobData = () => {
+      // Replace this with real API fetching logic
+      setJobData([
+        { name: "Job 1", applications: 120, status: "Open" },
+        { name: "Job 2", applications: 80, status: "Closed" },
+        { name: "Job 3", applications: 150, status: "Open" },
+        { name: "Job 4", applications: 60, status: "Closed" },
+      ]);
+    };
+
+    const fetchTrendData = () => {
+      // Replace this with real API fetching logic
+      setTrendData([
+        { date: "2024-12-28", applications: 200 },
+        { date: "2024-12-29", applications: 180 },
+        { date: "2024-12-30", applications: 160 },
+        { date: "2024-12-31", applications: 220 },
+        { date: "2025-01-01", applications: 210 },
+        { date: "2025-01-02", applications: 230 },
+        { date: "2025-01-03", applications: 240 },
+      ]);
+    };
+
+    fetchJobData();
+    fetchTrendData();
+  }, []);
+
+  const handleSidebarToggle = () => {
+    setOpenSidebarToggle(!openSidebarToggle);
   };
 
   return (
@@ -75,32 +88,27 @@ function Dashboard() {
         <ul className="sidebar-list">
           <li className="sidebar-list-item">
             <a href="#">
-              <BsGrid1X2Fill className="icon" /> Dashboard
+              <BsGrid1X2Fill className="icon" /> Analytics
             </a>
           </li>
           <li className="sidebar-list-item">
             <a href="#">
-              <BsFillArchiveFill className="icon" /> Applicants
+              <BsFillArchiveFill className="icon" /> Job Management
             </a>
           </li>
           <li className="sidebar-list-item">
             <a href="#">
-              <BsFillGrid3X3GapFill className="icon" /> Assessments
+              <BsFillGrid3X3GapFill className="icon" /> Resume Screening
             </a>
           </li>
           <li className="sidebar-list-item">
             <a href="#">
-              <BsPeopleFill className="icon" /> Hiring
+              <BsPeopleFill className="icon" /> Applicants
             </a>
           </li>
           <li className="sidebar-list-item">
             <a href="#">
-              <BsListCheck className="icon" /> Schedule
-            </a>
-          </li>
-          <li className="sidebar-list-item">
-            <a href="#">
-              <BsMenuButtonWideFill className="icon" /> Profile
+              <BsMenuButtonWideFill className="icon" /> Help & Support
             </a>
           </li>
           <li className="sidebar-list-item">
@@ -128,7 +136,7 @@ function Dashboard() {
           {/* Card 1 */}
           <div className="card" style={{ backgroundColor: "#2962ff" }}>
             <div className="card-inner">
-              <h3>Total Application</h3>
+              <h3>Total Job Posted</h3>
               <div style={{ width: "55px", height: "55px", margin: "10px 20px" }}>
                 <CircularProgressbar
                   value={progressValues.applications}
@@ -148,7 +156,7 @@ function Dashboard() {
           {/* Card 2 */}
           <div className="card" style={{ backgroundColor: "#ff6d00" }}>
             <div className="card-inner">
-              <h3>Rejected Application</h3>
+              <h3>Total Applicants</h3>
               <div style={{ width: "65px", height: "65px", margin: "10px 20px" }}>
                 <CircularProgressbar
                   value={progressValues.rejected}
@@ -188,7 +196,7 @@ function Dashboard() {
           {/* Card 4 */}
           <div className="card" style={{ backgroundColor: "#d50000" }}>
             <div className="card-inner">
-              <h3>ALERTS</h3>
+              <h3>Rejected Applicants</h3>
               <div style={{ width: "50px", height: "50px", margin: "10px 20px" }}>
                 <CircularProgressbar
                   value={progressValues.alerts}
@@ -209,36 +217,30 @@ function Dashboard() {
         <div className="charts">
           {/* Bar Chart */}
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <BarChart data={jobData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis />
-              <Tooltip />
+              <Tooltip
+                formatter={(value, name, props) => [`Applications: ${value}`, `Status: ${props.payload.status}`]}
+              />
               <Legend />
-              <Bar dataKey="Job_View" fill="#8884d8" />
-              <Bar dataKey="Job_Applied" fill="#82ca9d" />
+              <Bar
+                dataKey="applications"
+                fill={(entry) => (entry.status === "Open" ? "#4CAF50" : "#B0BEC5")}
+              />
             </BarChart>
           </ResponsiveContainer>
 
           {/* Line Chart */}
           <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <LineChart data={trendData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
+              <XAxis dataKey="date" />
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line
-                type="monotone"
-                dataKey="Job_Applied"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-              />
-              <Line
-                type="monotone"
-                dataKey="Job_View"
-                stroke="#82ca9d"
-              />
+              <Line type="monotone" dataKey="applications" stroke="#8884d8" activeDot={{ r: 8 }} />
             </LineChart>
           </ResponsiveContainer>
         </div>

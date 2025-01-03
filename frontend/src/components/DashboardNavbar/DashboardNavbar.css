@@ -1,0 +1,35 @@
+.dashboard-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #213696;
+    color: white;
+    padding: 10px 20px;
+  }
+  
+  .dashboard-logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .dashboard-nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+  }
+  
+  .dashboard-nav-links a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .logout-button {
+    background-color: #D50000;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
