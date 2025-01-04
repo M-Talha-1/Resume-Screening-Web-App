@@ -19,6 +19,9 @@ import {
   ResponsiveContainer,
   LineChart,
   Line,
+  PieChart,
+  Pie,
+  Cell,
 } from "recharts";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -35,22 +38,75 @@ function Dashboard() {
     alerts: 30,
   });
 
+  const [resumeData, setResumeData] = useState({
+    screened: 60, // Dummy data for screened resumes
+    unscreened: 40, // Dummy data for unscreened resumes
+  });
+
+  const COLORS = ["#0088FE", "#FFBB28"]; // Pie chart segment colors
+
   // Dummy fetch simulation for job and trend data
   useEffect(() => {
     const fetchJobData = () => {
-      // Replace this with real API fetching logic
       setJobData([
-        { name: "Job 1", applications: 120, status: "Open" },
-        { name: "Job 2", applications: 80, status: "Closed" },
-        { name: "Job 3", applications: 150, status: "Open" },
+        { name: "Job 1", applications: 240, status: "Open" },
+        { name: "Job 2", applications: 180, status: "Closed" },
+        { name: "Job 3", applications: 120, status: "Open" },
         { name: "Job 4", applications: 60, status: "Closed" },
       ]);
     };
 
     const fetchTrendData = () => {
-      // Replace this with real API fetching logic
       setTrendData([
-        { date: "2024-12-28", applications: 200 },
+        // October Data
+        { date: "2024-10-01", applications: 100 },
+        { date: "2024-10-02", applications: 150 },
+        { date: "2024-10-03", applications: 200 },
+        { date: "2024-10-04", applications: 180 },
+        { date: "2024-10-05", applications: 220 },
+        { date: "2024-10-06", applications: 240 },
+        { date: "2024-10-07", applications: 210 },
+        { date: "2024-10-08", applications: 180 },
+        { date: "2024-10-09", applications: 190 },
+        { date: "2024-10-10", applications: 210 },
+        { date: "2024-10-11", applications: 220 },
+        { date: "2024-10-12", applications: 250 },
+        { date: "2024-10-13", applications: 230 },
+        { date: "2024-10-14", applications: 200 },
+        { date: "2024-10-15", applications: 220 },
+    
+        // November Data
+        { date: "2024-11-01", applications: 400 },
+        { date: "2024-11-02", applications: 370 },
+        { date: "2024-11-03", applications: 320 },
+        { date: "2024-11-04", applications: 450 },
+        { date: "2024-11-05", applications: 460 },
+        { date: "2024-11-06", applications: 480 },
+        { date: "2024-11-07", applications: 510 },
+        { date: "2024-11-08", applications: 550 },
+        { date: "2024-11-09", applications: 590 },
+        { date: "2024-11-10", applications: 600 },
+        { date: "2024-11-11", applications: 620 },
+        { date: "2024-11-12", applications: 640 },
+        { date: "2024-11-13", applications: 630 },
+        { date: "2024-11-14", applications: 670 },
+        { date: "2024-11-15", applications: 690 },
+    
+        // December Data
+        { date: "2024-12-15", applications: 900 },
+        { date: "2024-12-16", applications: 800 },
+        { date: "2024-12-17", applications: 360 },
+        { date: "2024-12-18", applications: 650 },
+        { date: "2024-12-19", applications: 550 },
+        { date: "2024-12-20", applications: 700 },
+        { date: "2024-12-21", applications: 600 },
+        { date: "2024-12-22", applications: 500 },
+        { date: "2024-12-23", applications: 190 },
+        { date: "2024-12-24", applications: 165 },
+        { date: "2024-12-25", applications: 175 },
+        { date: "2024-12-26", applications: 280 },
+        { date: "2024-12-27", applications: 300 },
+        { date: "2024-12-28", applications: 170 },
         { date: "2024-12-29", applications: 180 },
         { date: "2024-12-30", applications: 160 },
         { date: "2024-12-31", applications: 220 },
@@ -59,7 +115,7 @@ function Dashboard() {
         { date: "2025-01-03", applications: 240 },
       ]);
     };
-
+    
     fetchJobData();
     fetchTrendData();
   }, []);
@@ -67,6 +123,28 @@ function Dashboard() {
   const handleSidebarToggle = () => {
     setOpenSidebarToggle(!openSidebarToggle);
   };
+
+  const filterTrendData = (range) => {
+    const now = new Date();
+    let filteredData;
+
+    if (range === "7days") {
+      const sevenDaysAgo = new Date(now.setDate(now.getDate() - 7));
+      filteredData = trendData.filter((d) => new Date(d.date) >= sevenDaysAgo);
+    } else if (range === "1month") {
+      const oneMonthAgo = new Date(now.setMonth(now.getMonth() - 1));
+      filteredData = trendData.filter((d) => new Date(d.date) >= oneMonthAgo);
+    } else {
+      filteredData = trendData;
+    }
+
+    setTrendData(filteredData);
+  };
+
+  const pieChartData = [
+    { name: "Screened Resumes", value: resumeData.screened },
+    { name: "Unscreened Resumes", value: resumeData.unscreened },
+  ];
 
   return (
     <div className="grid-container">
@@ -176,7 +254,7 @@ function Dashboard() {
           {/* Card 3 */}
           <div className="card" style={{ backgroundColor: "#2e7d32" }}>
             <div className="card-inner">
-              <h3>Shortlisted Application</h3>
+              <h3>Shortlisted Applicants</h3>
               <div style={{ width: "70px", height: "70px", margin: "10px 20px" }}>
                 <CircularProgressbar
                   value={progressValues.shortlisted}
@@ -217,31 +295,88 @@ function Dashboard() {
         <div className="charts">
           {/* Bar Chart */}
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={jobData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <BarChart
+              data={jobData}
+              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis />
               <Tooltip
-                formatter={(value, name, props) => [`Applications: ${value}`, `Status: ${props.payload.status}`]}
+                formatter={(value, name, props) => [
+                  `Applications: ${value}`,
+                  `Status: ${props.payload.status}`,
+                ]}
               />
               <Legend />
-              <Bar
-                dataKey="applications"
-                fill={(entry) => (entry.status === "Open" ? "#4CAF50" : "#B0BEC5")}
-              />
+              {jobData.map((entry, index) => (
+                <Bar
+                  key={index}
+                  dataKey="applications"
+                  fill={entry.status === "Open" ? "#4CAF50" : "#B0BEC5"}
+                  barSize={40}
+                />
+              ))}
             </BarChart>
           </ResponsiveContainer>
 
           {/* Line Chart */}
           <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={trendData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <LineChart
+              data={trendData}
+              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
+              <XAxis
+                dataKey="date"
+                tickFormatter={(date) =>
+                  new Date(date).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                  })
+                }
+              />
               <YAxis />
+              <Tooltip
+                formatter={(value, name) => [`Applications: ${value}`, "Date"]}
+              />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="applications"
+                stroke="#8884d8"
+                activeDot={{ r: 8 }}
+              />
+            </LineChart>  <div>
+            <button onClick={() => filterTrendData("7days")}>Last 7 Days</button>
+            <button onClick={() => filterTrendData("1month")}>
+              Last Month
+            </button>
+          </div>
+          </ResponsiveContainer>
+
+        
+
+          {/* Pie Chart */}
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                data={pieChartData}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={100}
+                fill="#8884d8"
+                label
+              >
+                {pieChartData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index]} />
+                ))}
+              </Pie>
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="applications" stroke="#8884d8" activeDot={{ r: 8 }} />
-            </LineChart>
+            </PieChart>
           </ResponsiveContainer>
         </div>
       </main>
