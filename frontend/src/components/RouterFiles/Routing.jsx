@@ -19,6 +19,7 @@ import Privacy from '../../Pages/Privacy/Privacy';
 import Security from '../../Pages/Security/Security';
 import Term from '../../Pages/Term/Term';
 import Newsletter from '../../Pages/Newsletter/Newsletter';
+import Job_Management from '../../Pages/Job_Management/Job_Management';
 
 
 
@@ -57,6 +58,8 @@ const Routing = () => {
       <Route path="/Security" element={<Security />} />
       <Route path="/term" element={<Term />} />
       <Route path="/newsletter" element={<Newsletter />} />
+      <Route path="/job_management" element={<Job_Management />} />
+
 
 
 

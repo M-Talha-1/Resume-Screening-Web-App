@@ -74,7 +74,7 @@ function Dashboard() {
         { date: "2024-10-13", applications: 230 },
         { date: "2024-10-14", applications: 200 },
         { date: "2024-10-15", applications: 220 },
-    
+
         // November Data
         { date: "2024-11-01", applications: 400 },
         { date: "2024-11-02", applications: 370 },
@@ -91,7 +91,7 @@ function Dashboard() {
         { date: "2024-11-13", applications: 630 },
         { date: "2024-11-14", applications: 670 },
         { date: "2024-11-15", applications: 690 },
-    
+
         // December Data
         { date: "2024-12-15", applications: 900 },
         { date: "2024-12-16", applications: 800 },
@@ -115,7 +115,7 @@ function Dashboard() {
         { date: "2025-01-03", applications: 240 },
       ]);
     };
-    
+
     fetchJobData();
     fetchTrendData();
   }, []);
@@ -130,7 +130,7 @@ function Dashboard() {
   const filterTrendData = (range) => {
     const now = new Date();
     let filteredData;
-  
+
     if (range === "7days") {
       const sevenDaysAgo = new Date(now.setDate(now.getDate() - 7));
       filteredData = trendData.filter((d) => new Date(d.date) >= sevenDaysAgo);
@@ -140,7 +140,7 @@ function Dashboard() {
     } else {
       filteredData = trendData; // Default case for all data
     }
-  
+
     setFilteredTrendData(filteredData); // Update state with filtered data
   };
   const pieChartData = [
@@ -172,7 +172,7 @@ function Dashboard() {
             </a>
           </li>
           <li className="sidebar-list-item">
-            <a href="#">
+            <a href="/job_management">
               <BsFillArchiveFill className="icon" /> Job Management
             </a>
           </li>
@@ -297,77 +297,77 @@ function Dashboard() {
         <div className="charts">
           {/* Bar Chart */}
           {/* Bar Chart */}
-{/* Bar Chart */}
-<ResponsiveContainer width="100%" height={300}>
-  <BarChart
-    data={jobData}
-    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-  >
-    <CartesianGrid strokeDasharray="3 3" />
-    <XAxis dataKey="name" />
-    <YAxis />
-    <Tooltip
-      formatter={(value, name, props) => [
-        `Applications: ${value}`,
-        `Status: ${props.payload.status}`,
-      ]}
-    />
-    <Legend 
-      payload={[
-        { value: "Open", type: "square", color: "#4CAF50" },
-        { value: "Closed", type: "square", color: "#B0BEC5" },
-      ]}
-    />
-    <Bar dataKey="applications" barSize={40}>
-      {jobData.map((entry, index) => (
-        <Cell
-          key={`cell-${index}`}
-          fill={entry.status === "Open" ? "#4CAF50" : "#B0BEC5"}
-        />
-      ))}
-    </Bar>
-  </BarChart>
-</ResponsiveContainer>
+          {/* Bar Chart */}
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart
+              data={jobData}
+              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip
+                formatter={(value, name, props) => [
+                  `Applications: ${value}`,
+                  `Status: ${props.payload.status}`,
+                ]}
+              />
+              <Legend
+                payload={[
+                  { value: "Open", type: "square", color: "#4CAF50" },
+                  { value: "Closed", type: "square", color: "#B0BEC5" },
+                ]}
+              />
+              <Bar dataKey="applications" barSize={40}>
+                {jobData.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={entry.status === "Open" ? "#4CAF50" : "#B0BEC5"}
+                  />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
 
 
 
-<ResponsiveContainer width="100%" height={300}>
-  <LineChart
-    data={filteredTrendData} // Use filtered data here
-    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-  >
-    <CartesianGrid strokeDasharray="3 3" />
-    <XAxis
-      dataKey="date"
-      tickFormatter={(date) =>
-        new Date(date).toLocaleDateString("en-US", {
-          month: "short",
-          day: "numeric",
-        })
-      }
-    />
-    <YAxis />
-    <Tooltip
-      formatter={(value, name) => [`Applications: ${value}`, "Date"]}
-    />
-    <Legend />
-    <Line
-      type="monotone"
-      dataKey="applications"
-      stroke="#8884d8"
-      activeDot={{ r: 8 }}
-    />
-  </LineChart>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart
+              data={filteredTrendData} // Use filtered data here
+              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis
+                dataKey="date"
+                tickFormatter={(date) =>
+                  new Date(date).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                  })
+                }
+              />
+              <YAxis />
+              <Tooltip
+                formatter={(value, name) => [`Applications: ${value}`, "Date"]}
+              />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="applications"
+                stroke="#8884d8"
+                activeDot={{ r: 8 }}
+              />
+            </LineChart>
 
-  {/* Buttons for filtering */}
-  <div style={{ marginTop: "10px" }}>
-    <button className="dashbtn" onClick={() => filterTrendData("7days")}>Last 7 Days</button>
-    <button className="dashbtn" onClick={() => filterTrendData("1month")}>Last Month</button>
-    <button className="dashbtn" onClick={() => filterTrendData("all")}>All Data</button>
-  </div>
-</ResponsiveContainer>
+            {/* Buttons for filtering */}
+            <div style={{ marginTop: "10px" }}>
+              <button className="dashbtn" onClick={() => filterTrendData("7days")}>Last 7 Days</button>
+              <button className="dashbtn" onClick={() => filterTrendData("1month")}>Last Month</button>
+              <button className="dashbtn" onClick={() => filterTrendData("all")}>All Data</button>
+            </div>
+          </ResponsiveContainer>
 
-        
+
 
           {/* Pie Chart */}
           <ResponsiveContainer width="100%" height={300}>
