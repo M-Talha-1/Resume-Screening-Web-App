@@ -172,7 +172,7 @@ function Dashboard() {
             </a>
           </li>
           <li className="sidebar-list-item">
-            <a href="/job_management">
+            <a href="/dashmanagement">
               <BsFillArchiveFill className="icon" /> Job Management
             </a>
           </li>
