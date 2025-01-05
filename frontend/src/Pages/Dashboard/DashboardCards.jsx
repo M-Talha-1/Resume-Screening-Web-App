@@ -14,19 +14,8 @@ import "react-circular-progressbar/dist/styles.css";
 import "./Dashboard.css";
 function DashboardCards({ progressValues }) {
   return (
-    <main className="main-container">
-        <div className="header">
-          <h3>Dashboard</h3>
-          <span className="menu-icon" onClick={handleSidebarToggle}>
-            ☰
-          </span>
-        </div>
-
-        <div className="main-title">
-          <h3>Dashboard Overview</h3>
-        </div>
-
-        <div className="main-cards">
+    <div>
+      <div className="main-cards">
           {/* Card 1 */}
           <div className="card" style={{ backgroundColor: "#2962ff" }}>
             <div className="card-inner">
@@ -107,9 +96,8 @@ function DashboardCards({ progressValues }) {
             <h1>42</h1>
           </div>
         </div>
-
-      
-      </main>
+    </div>
+   
   );
 }
 

@@ -23,12 +23,7 @@ function Charts({ jobData, filteredTrendData, pieChartData, COLORS, filterTrendD
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
   const [jobData, setJobData] = useState([]);
   const [trendData, setTrendData] = useState([]);
-  const [progressValues, setProgressValues] = useState({
-    applications: 75,
-    rejected: 20,
-    shortlisted: 50,
-    alerts: 30,
-  });
+
 
   const [resumeData, setResumeData] = useState({
     screened: 60, // Dummy data for screened resumes
@@ -141,11 +136,8 @@ function Charts({ jobData, filteredTrendData, pieChartData, COLORS, filterTrendD
   ];
  
   return (
-    <main className="main-container">
-
-        
-
-        <div className="charts">
+   <div>
+      <div className="charts">
           {/* Bar Chart */}
           {/* Bar Chart */}
           {/* Bar Chart */}
@@ -242,7 +234,7 @@ function Charts({ jobData, filteredTrendData, pieChartData, COLORS, filterTrendD
             </PieChart>
           </ResponsiveContainer>
         </div>
-      </main>
+   </div>
   );
 }
 
