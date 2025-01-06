@@ -7,8 +7,15 @@ import {
   BsMenuButtonWideFill,
   BsFillGearFill,
 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import "./Dashboard.css";
+
 function Sidebar({ openSidebarToggle, handleSidebarToggle, setActiveSection }) {
+  const handleLinkClick = (section) => {
+    setActiveSection(section); // Track the active section
+    // Sidebar will remain open, no need to close it here
+  };
+
   return (
     <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive" : ""}>
       <div className="sidebar-title">
@@ -23,34 +30,34 @@ function Sidebar({ openSidebarToggle, handleSidebarToggle, setActiveSection }) {
 
       <ul className="sidebar-list">
         <li className="sidebar-list-item">
-          <button onClick={() => setActiveSection("analytics")}>
+          <Link to="/" >
             <BsGrid1X2Fill className="icon" /> Analytics
-          </button>
+          </Link>
         </li>
         <li className="sidebar-list-item">
-          <button onClick={() => setActiveSection("Job_Management")}>
+          <Link to="/jobmanagement" >
             <BsFillArchiveFill className="icon" /> Job Management
-          </button>
+          </Link>
         </li>
         <li className="sidebar-list-item">
-          <button onClick={() => setActiveSection("resumeScreening")}>
+          <Link to="/resumescreening">
             <BsFillGrid3X3GapFill className="icon" /> Resume Screening
-          </button>
+          </Link>
         </li>
         <li className="sidebar-list-item">
-          <button onClick={() => setActiveSection("applicants")}>
+          <Link to="/applicants">
             <BsPeopleFill className="icon" /> Applicants
-          </button>
+          </Link>
         </li>
         <li className="sidebar-list-item">
-          <button onClick={() => setActiveSection("helpSupport")}>
+          <Link to="/helpsupport">
             <BsMenuButtonWideFill className="icon" /> Help & Support
-          </button>
+          </Link>
         </li>
         <li className="sidebar-list-item">
-          <button onClick={() => setActiveSection("settings")}>
+          <Link to="/setting" >
             <BsFillGearFill className="icon" /> Setting
-          </button>
+          </Link>
         </li>
       </ul>
     </aside>

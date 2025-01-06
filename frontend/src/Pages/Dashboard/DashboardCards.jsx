@@ -15,7 +15,18 @@ import "./Dashboard.css";
 function DashboardCards({ progressValues }) {
   return (
     <div>
-      <div className="main-cards">
+        <div className="header">
+          <h3>Dashboard</h3>
+          <span className="menu-icon" onClick={handleSidebarToggle}>
+            ☰
+          </span>
+        </div>
+
+        <div className="main-title">
+          <h3>Dashboard Overview</h3>
+        </div>
+
+        <div className="main-cards">
           {/* Card 1 */}
           <div className="card" style={{ backgroundColor: "#2962ff" }}>
             <div className="card-inner">

@@ -1,16 +1,20 @@
-// App.jsx
 import React from "react";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import Navbar from "./components/nevbar/Navbar";
 import DashboardNavbar from "./components/DashboardNavbar/DashboardNavbar";
 import Footer from "./components/Footer/Footer";
 import Routing from "./components/RouterFiles/Routing";
+import Job_Management from "./Pages/Job_Management/Job_Management";
 
 const App = () => {
   const ShouldShowNavbarAndFooter = () => {
     const location = useLocation();
     const dashboardPaths = ["/dashboard"]; // Add dashboard-related paths here
-    return { isDashboard: dashboardPaths.includes(location.pathname) };
+    const jobManagementPaths = ["/jobmanagement"]; // Add job management paths here
+    return {
+      isDashboard: dashboardPaths.includes(location.pathname),
+      isJob_Management: jobManagementPaths.includes(location.pathname),
+    };
   };
 
   return (
@@ -21,20 +25,27 @@ const App = () => {
 };
 
 const MainApp = ({ ShouldShowNavbarAndFooter }) => {
-  const { isDashboard } = ShouldShowNavbarAndFooter();
+  const { isDashboard, isJob_Management } = ShouldShowNavbarAndFooter();
 
   return (
     <>
       {/* Render Navbar based on route */}
       {isDashboard ? <DashboardNavbar /> : <Navbar />}
-      <Routing />
-      {/* Render Footer only if not on the dashboard */}
-      {!isDashboard && <Footer />}
+      
+      <div className="main-content">
+        <Routing />
+      </div>
+      
+      {/* Render Footer only if not on the dashboard or job management page */}
+      {!isDashboard && !isJob_Management && <Footer />}
     </>
   );
 };
 
 export default App;
+
+
+
 
 
 
