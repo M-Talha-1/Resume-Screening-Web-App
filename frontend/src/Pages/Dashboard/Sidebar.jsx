@@ -40,7 +40,7 @@ function Sidebar({ openSidebarToggle, handleSidebarToggle, setActiveSection }) {
           </Link>
         </li>
         <li className="sidebar-list-item">
-          <Link to="/resumescreening">
+          <Link to="/cvscreening">
             <BsFillGrid3X3GapFill className="icon" /> Resume Screening
           </Link>
         </li>

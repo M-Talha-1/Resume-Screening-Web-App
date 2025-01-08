@@ -20,6 +20,10 @@ import Security from '../../Pages/Security/Security';
 import Term from '../../Pages/Term/Term';
 import Newsletter from '../../Pages/Newsletter/Newsletter';
 import Job_Management from '../../Pages/Job_Management/Job_Management';
+import CVScreening from '../../Pages/CVScreening/CVScreening';
+import Applicants from '../../Pages/Applicants/Applicants';
+import HelpSupport from '../../Pages/HelpSupport/HelpSupport';
+import Setting from '../../Pages/Setting/Setting';
 
 
 
@@ -60,6 +64,14 @@ const Routing = () => {
       <Route path="/term" element={<Term />} />
       <Route path="/newsletter" element={<Newsletter />} />
       <Route path="/jobmanagement" element={<Job_Management />} />
+      <Route path="/cvscreening" element={<CVScreening />} />
+      <Route path="/applicants" element={<Applicants />} />
+      <Route path="/helpsupport" element={<HelpSupport />} />
+      <Route path="/setting" element={<Setting />} />
+
+
+
+
 
     </Routes>
   );

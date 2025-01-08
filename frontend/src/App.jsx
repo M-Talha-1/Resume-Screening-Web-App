@@ -4,16 +4,23 @@ import Navbar from "./components/nevbar/Navbar";
 import DashboardNavbar from "./components/DashboardNavbar/DashboardNavbar";
 import Footer from "./components/Footer/Footer";
 import Routing from "./components/RouterFiles/Routing";
-import Job_Management from "./Pages/Job_Management/Job_Management";
 
 const App = () => {
   const ShouldShowNavbarAndFooter = () => {
     const location = useLocation();
-    const dashboardPaths = ["/dashboard"]; // Add dashboard-related paths here
-    const jobManagementPaths = ["/jobmanagement"]; // Add job management paths here
+    const dashboardPaths = ["/dashboard"]; // Dashboard-related paths
+    const jobManagementPaths = ["/jobmanagement"]; // Job Management paths
+    const cvScreeningPaths = ["/cvscreening"]; // CV Screening paths
+    const applicantsPaths = ["/applicants"]; // Applicants paths
+    const helpSupportPaths = ["/helpsupport"]; // Help & Support paths
+    const settingPaths = ["/setting"]; // Setting paths
     return {
       isDashboard: dashboardPaths.includes(location.pathname),
       isJob_Management: jobManagementPaths.includes(location.pathname),
+      isCVScreening: cvScreeningPaths.includes(location.pathname),
+      isApplicants: applicantsPaths.includes(location.pathname),
+      isHelpSupport: helpSupportPaths.includes(location.pathname),
+      isSetting: settingPaths.includes(location.pathname),
     };
   };
 
@@ -25,52 +32,42 @@ const App = () => {
 };
 
 const MainApp = ({ ShouldShowNavbarAndFooter }) => {
-  const { isDashboard, isJob_Management } = ShouldShowNavbarAndFooter();
+  const {
+    isDashboard,
+    isJob_Management,
+    isCVScreening,
+    isApplicants,
+    isHelpSupport,
+    isSetting,
+  } = ShouldShowNavbarAndFooter();
 
   return (
     <>
-      {/* Show DashboardNavbar for both Dashboard and Job Management */}
-      {isDashboard || isJob_Management ? <DashboardNavbar /> : <Navbar />}
+      {/* Show DashboardNavbar for Dashboard, Job Management, CV Screening, Applicants, Help & Support, and Setting */}
+      {isDashboard ||
+      isJob_Management ||
+      isCVScreening ||
+      isApplicants ||
+      isHelpSupport ||
+      isSetting ? (
+        <DashboardNavbar />
+      ) : (
+        <Navbar />
+      )}
       
       <div className="main-content">
         <Routing />
       </div>
       
-      {/* Render Footer only if not on the dashboard or job management page */}
-      {!isDashboard && !isJob_Management && <Footer />}
+      {/* Render Footer only if not on Dashboard, Job Management, CV Screening, Applicants, Help & Support, or Setting */}
+      {!isDashboard &&
+        !isJob_Management &&
+        !isCVScreening &&
+        !isApplicants &&
+        !isHelpSupport &&
+        !isSetting && <Footer />}
     </>
   );
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-// // App.jsx
-// import React from 'react';
-// import { BrowserRouter as Router } from 'react-router-dom';
-// import Navbar from './components/nevbar/Navbar';
-// import Footer from './components/Footer/Footer';
-// import Routing from './components/RouterFiles/Routing'; // Adjust path if necessary
-
-// const App = () => {
-//   return (
-//     <Router>
-//       <Navbar />
-//       <Routing />
-//       <Footer />
-//     </Router>
-//   );
-// };
-
-// export default App;
-
-// App.jsx
