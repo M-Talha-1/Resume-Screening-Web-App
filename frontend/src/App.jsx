@@ -29,8 +29,8 @@ const MainApp = ({ ShouldShowNavbarAndFooter }) => {
 
   return (
     <>
-      {/* Render Navbar based on route */}
-      {isDashboard ? <DashboardNavbar /> : <Navbar />}
+      {/* Show DashboardNavbar for both Dashboard and Job Management */}
+      {isDashboard || isJob_Management ? <DashboardNavbar /> : <Navbar />}
       
       <div className="main-content">
         <Routing />
@@ -43,6 +43,7 @@ const MainApp = ({ ShouldShowNavbarAndFooter }) => {
 };
 
 export default App;
+
 
 
 

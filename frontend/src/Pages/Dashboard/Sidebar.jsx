@@ -20,8 +20,8 @@ function Sidebar({ openSidebarToggle, handleSidebarToggle, setActiveSection }) {
     <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive" : ""}>
       <div className="sidebar-title">
         <div className="sidebar-brand">
-          <span className="Hire">Hire</span>
-          <span className="Me">Me</span>
+        <span className="Hire"><Link to="/dashboard">Hire</Link></span>
+        <span className="Me"><Link to="/dashboard">Me</Link></span>
         </div>
         <span className="icon close_icon" onClick={handleSidebarToggle}>
           X
@@ -30,7 +30,7 @@ function Sidebar({ openSidebarToggle, handleSidebarToggle, setActiveSection }) {
 
       <ul className="sidebar-list">
         <li className="sidebar-list-item">
-          <Link to="/" >
+          <Link to="/dashboard" >
             <BsGrid1X2Fill className="icon" /> Analytics
           </Link>
         </li>

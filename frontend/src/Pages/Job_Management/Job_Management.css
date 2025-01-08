@@ -13,7 +13,7 @@
 
 .create-job-button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #213696;
   color: white;
   border: none;
   cursor: pointer;
@@ -21,7 +21,7 @@
 }
 
 .create-job-button:hover {
-  background-color: #0056b3;
+  background-color: #213696;
 }
 
 .form-container {
@@ -51,7 +51,7 @@
 
 .submit-button {
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #213696;
   color: white;
   border: none;
   cursor: pointer;
@@ -59,7 +59,7 @@
 }
 
 .submit-button:hover {
-  background-color: #218838;
+  background-color: #213696;
 }
 /* Add these styles to JobManagement.css */
 .search-sort-section {
@@ -155,7 +155,7 @@
 }
 
 .edit-button {
-  background-color: #007bff;
+  background-color: #213696;
   color: white;
 }
 
@@ -171,9 +171,8 @@
 /* General Styles */
 .job-management-container {
   font-family: Arial, sans-serif;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin-top: 70px;
 }
 
 /* Top Section Styles */
@@ -208,11 +207,11 @@
   margin: 10px 0 0;
   font-size: 24px;
   font-weight: bold;
-  color: #007bff;
+  color: #213696;
 }
 
 .create-job-button {
-  background-color: #28a745;
+  background-color: #213696;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -221,7 +220,7 @@
 }
 
 .create-job-button:hover {
-  background-color: #218838;
+  background-color: #2140cc;
 }
 
 /* Popup Form Styles */
@@ -256,7 +255,7 @@
 }
 
 .submit-button {
-  background-color: #007bff;
+  background-color: #213696;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -265,7 +264,7 @@
 }
 
 .submit-button:hover {
-  background-color: #0056b3;
+  background-color: #2140cc;
 }
 
 /* Search and Sort Section Styles */
@@ -289,7 +288,7 @@
 }
 
 .search-button {
-  background-color: #007bff;
+  background-color: #213696;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -298,7 +297,7 @@
 }
 
 .search-button:hover {
-  background-color: #0056b3;
+  background-color: #2140cc;
 }
 
 .sort-dropdown {
@@ -344,16 +343,62 @@
 }
 
 .edit-button {
-  background-color: #007bff;
+  background-color: #213696;
   color: white;
 }
-
+.edit-button:hover {
+  background-color: #2140cc;
+  color: white;
+}
 .close-button {
-  background-color: #ffc107;
+  background-color: #213696;
   color: white;
 }
-
+.close-button:hover {
+  color: white;
+}
 .delete-button {
   background-color: #dc3545;
   color: white;
+}
+.delete-button:hover {
+  background-color: #c72535;
+}
+/* Container for Sidebar and Content */
+.job-management-container {
+  display: flex; /* Use Flexbox layout */
+  height: 100vh; /* Ensure it takes full viewport height */
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 100%; /* Set the width of the Sidebar */
+  background-color: #2c3e50; /* Example background color */
+  color: white;
+  /* padding: 20px; */
+  position: fixed; /* Fix Sidebar on the left */
+  height: 100%; /* Full height */
+  top: 0;
+}
+
+/* Content Section (right side) */
+.job-management-content {
+  
+  /* padding: 20px; */
+  flex-grow: 1; 
+  background-color: #f8f8f8; /* Example background color */
+  height: 100vh;
+  overflow-y: auto; /* Make content scrollable if it overflows */
+}
+
+/* Example for Sidebar link styling (optional) */
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  /* padding: 10px 0; */
+}
+
+.sidebar a:hover {
+  background-color: #34495e;
 }
