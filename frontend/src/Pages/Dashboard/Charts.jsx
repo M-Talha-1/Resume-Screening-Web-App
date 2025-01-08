@@ -130,25 +130,31 @@ const Charts = () => {
     <div className="charts">
       {/* Bar Chart */}
       <ResponsiveContainer width="100%" height={300}>
-        <BarChart
-          data={jobData}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="applications" barSize={40}>
-            {jobData.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={entry.status === "Open" ? "#4CAF50" : "#B0BEC5"}
-              />
-            ))}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
+      <BarChart
+        data={jobData}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend
+          payload={[
+            { value: "Open", type: "square", color: "#4CAF50" },
+            { value: "Closed", type: "square", color: "#B0BEC5" },
+          ]}
+        />
+        <Bar dataKey="applications" barSize={40}>
+          {jobData.map((entry, index) => (
+            <Cell
+              key={`cell-${index}`}
+              fill={entry.status === "Open" ? "#4CAF50" : "#B0BEC5"}
+            />
+          ))}
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
+
 
       {/* Line Chart */}
       <ResponsiveContainer width="100%" height={300}>
