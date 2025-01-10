@@ -220,7 +220,7 @@
 }
 
 .create-job-button:hover {
-  background-color: #2140cc;
+  background-color: #1a2b7a;
 }
 
 /* Popup Form Styles */
@@ -264,7 +264,7 @@
 }
 
 .submit-button:hover {
-  background-color: #2140cc;
+  background-color: #1a2b7a;
 }
 
 /* Search and Sort Section Styles */
@@ -297,7 +297,7 @@
 }
 
 .search-button:hover {
-  background-color: #2140cc;
+  background-color: #1a2b7a;
 }
 
 .sort-dropdown {
@@ -347,7 +347,7 @@
   color: white;
 }
 .edit-button:hover {
-  background-color: #2140cc;
+  background-color: #1a2b7a;
   color: white;
 }
 .close-button {
