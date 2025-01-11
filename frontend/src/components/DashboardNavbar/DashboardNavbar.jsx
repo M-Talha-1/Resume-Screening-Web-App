@@ -6,8 +6,8 @@ const DashboardNavbar = () => {
   return (
     <nav className="dashboard-navbar">
          <div className="DashNav">
-            <span className="Hire">Hire</span>
-            <span className="Me">Me</span>
+         <span className="Hire"><Link to="/dashboard">Hire</Link></span>
+        <span className="Me"><Link to="/dashboard">Me</Link></span>
           </div>
       <div className="dashboard-navbar-container">
         <ul className="dashboard-nav-links">

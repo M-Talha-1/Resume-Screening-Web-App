@@ -31,16 +31,7 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <main className="main-container">
-        <div className="header">
-          <h3>Dashboard</h3>
-          <span className="menu-icon" onClick={handleSidebarToggle}>
-            ☰
-          </span>
-        </div>
-
-        <div className="main-title">
-          <h3>Dashboard Overview</h3>
-        </div>
+       
 
         <div className="main-cards">
           {/* Card 1 */}
