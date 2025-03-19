@@ -217,6 +217,9 @@
     display: inline;
   }
 }
+.dashbox{
+  color: white;
+}
 /* Small <= 768px */
   
 @media screen and (max-width: 768px) {

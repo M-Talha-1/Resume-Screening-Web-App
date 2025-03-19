@@ -1,3 +1,123 @@
-.applicant{
+/* General Layout */
+.applicant-container {
+    display: flex;
+    height: 100vh;
     margin-top: 70px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-container input,
+.search-container select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-container button {
+    background-color: #213696;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    outline: none;
+}
+
+.search-container button:focus {
+    outline: none;
+}
+
+/* Remove black border on focus */
+.search-btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Applicant Table */
+.applicant-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.applicant-table th,
+.applicant-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.applicant-table th {
+    background-color: #f1f1f1;
+}
+
+/* Status Colors */
+.status-shortlisted {
+    color: green;
+    font-weight: bold;
+}
+
+.status-rejected {
+    color: red;
+    font-weight: bold;
+}
+
+.status-pending {
+    color: orange;
+    font-weight: bold;
+}
+
+/* Action Buttons */
+.action-btn {
+    padding: 8px 12px;
+    border: none;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Apply View Button Styling to Edit Button */
+.edit-btn {
+    background-color: #1A2B7A;
+}
+
+.edit-btn:hover {
+    background-color: #142060;
+}
+
+.delete-btn {
+    background-color: #DC3545;
+}
+
+.delete-btn:hover {
+    background-color: #C72535;
 }

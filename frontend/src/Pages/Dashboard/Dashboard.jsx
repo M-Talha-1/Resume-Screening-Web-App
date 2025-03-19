@@ -37,7 +37,7 @@ const Dashboard = () => {
           {/* Card 1 */}
           <div className="card" style={{ backgroundColor: "#2962ff" }}>
             <div className="card-inner">
-              <h3>Total Job Posted</h3>
+              <h3 className="dashbox">Total Job Posted</h3>
               <div style={{ width: "55px", height: "55px", margin: "10px 20px" }}>
                 <CircularProgressbar
                   value={progressValues.applications}
@@ -57,7 +57,7 @@ const Dashboard = () => {
           {/* Card 2 */}
           <div className="card" style={{ backgroundColor: "#ff6d00" }}>
             <div className="card-inner">
-              <h3>Total Applicants</h3>
+              <h3 className="dashbox">Total Applicants</h3>
               <div style={{ width: "65px", height: "65px", margin: "10px 20px" }}>
                 <CircularProgressbar
                   value={progressValues.rejected}
@@ -77,7 +77,7 @@ const Dashboard = () => {
           {/* Card 3 */}
           <div className="card" style={{ backgroundColor: "#2e7d32" }}>
             <div className="card-inner">
-              <h3>Shortlisted Applicants</h3>
+              <h3 className="dashbox">Shortlisted Applicants</h3>
               <div style={{ width: "70px", height: "70px", margin: "10px 20px" }}>
                 <CircularProgressbar
                   value={progressValues.shortlisted}
@@ -97,7 +97,7 @@ const Dashboard = () => {
           {/* Card 4 */}
           <div className="card" style={{ backgroundColor: "#d50000" }}>
             <div className="card-inner">
-              <h3>Rejected Applicants</h3>
+              <h3 className="dashbox">Rejected Applicants</h3>
               <div style={{ width: "50px", height: "50px", margin: "10px 20px" }}>
                 <CircularProgressbar
                   value={progressValues.alerts}

@@ -14,7 +14,6 @@ import {
   Pie,
   Cell,
 } from "recharts";
-
 const Charts = () => {
   const [resumeData, setResumeData] = useState({
     screened: 60, // Dummy data for screened resumes
