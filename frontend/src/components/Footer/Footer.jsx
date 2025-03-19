@@ -11,10 +11,10 @@ const Footer = () => {
                 <span className='Hire'><Link to="/">Hire</Link></span> 
                 <span className='Mee'> <Link to="/">Me</Link></span>
                 </div> 
-          <p className="footer-description">
+          <p className="footer-description footertext">
             Our platform is designed to streamline and simplify your hiring journey, allowing you to recruit with ease.
           </p>
-          <p className="footer-address">
+          <p className="footer-address footertext">
             21/25 Broad Street, Lagos Island, Lagos <br />
             <a href="mailto:comms@hireme.net">comms@hireme.net</a>
           </p>
@@ -22,7 +22,7 @@ const Footer = () => {
 
         <div className="footer-links">
           <div className="footer-column">
-            <h3>Our Company</h3>
+            <h3 className='footertext' >Our Company</h3>
             <ul>
               <li><Link to="/aboutus">About Us</Link></li>
               <li><Link to="/career">Career</Link></li>
@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-column">
-            <h3>Resources</h3>
+            <h3 className='footertext'>Resources</h3>
             <ul>
               <li><Link to="#">Blog</Link></li>
               <li><a href="#">News</a></li>
@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-column">
-            <h3>Support</h3>
+            <h3 className='footertext'> Support</h3>
             <ul>
               <li><Link to="/faqs">FAQs</Link></li>
               <li><Link to="/newsletter">Newsletter</Link></li>
@@ -53,7 +53,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>© 2024 HireMe. All Rights Reserved</p>
+        <p className='footertext'>© 2024 HireMe. All Rights Reserved</p>
       </div>
     </footer>
     )

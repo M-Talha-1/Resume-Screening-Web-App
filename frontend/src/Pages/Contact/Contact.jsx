@@ -48,13 +48,13 @@ const Contact = () => {
         {/* Contact Details */}
         <div className="contact-details">
           <h2>Contact Information</h2>
-          <p>
+          <p className="contacttext">
             <strong>Phone:</strong> +92 302 638 9868
           </p>
-          <p>
+          <p className="contacttext">
             <strong>Email:</strong> HireMe@gmail.com
           </p>
-          <p>Feel free to reach out to us for any inquiries or support!</p>
+          <p className="contacttext">Feel free to reach out to us for any inquiries or support!</p>
         </div>
       </div>
     </div>

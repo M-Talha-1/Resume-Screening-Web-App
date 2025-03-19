@@ -42,7 +42,7 @@ const Products = () => {
         {/* Hero Section */}
         <section className="hero-section small_banner">
           <h1 className="hero-title">Our Products</h1>
-          <p className="hero-description">
+          <p className="hero-description ">
             Explore our AI-powered tools designed to streamline and enhance your hiring process.
           </p>
         </section><Title 

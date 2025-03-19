@@ -46,7 +46,7 @@ const FAQs = () => {
                     {/* Left Section */}
                     <div className="faqs-left">
                         <h1>Frequently Asked Questions</h1>
-                        <p>
+                        <p className="hero-description">
                             Got questions? We’ve got answers! Explore our FAQs to learn more
                             about HireMe and how it can transform your hiring process.
                         </p>
@@ -68,7 +68,7 @@ const FAQs = () => {
                                 </div>
                                 {activeIndex === index && (
                                     <div className="faq-answer">
-                                        <p>{faq.answer}</p>
+                                        <p className="hero-description">{faq.answer}</p>
                                     </div>
                                 )}
                             </div>
