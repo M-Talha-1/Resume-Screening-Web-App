@@ -146,43 +146,52 @@ const Job_Management = () => {
 
         {/* Popup Form */}
         {showForm && (
-          <div className="popup-overlay">
-            <div className="popup-form">
-              <button onClick={handleCloseForm} className="close-button">&times;</button>
-              <h3>Create Job</h3>
-              <form onSubmit={handleFormSubmit}>
-                <div className="form-group">
-                  <label>Job Title:</label>
-                  <input type="text" name="title" required className="form-input" />
-                </div>
-                <div className="form-group">
-                  <label>Job Description:</label>
-                  <textarea name="description" required className="form-input textarea"></textarea>
-                </div>
-                <div className="form-group">
-                  <label>Upload Description (PDF/DOCX):</label>
-                  <input type="file" accept=".pdf,.docx" className="form-input-file" />
-                </div>
-                <div className="form-group">
-                  <label>Required Skills:</label>
-                  <input type="text" name="skills" placeholder="Enter skills separated by commas" className="form-input" />
-                </div>
-                <div className="form-group">
-                  <label>Job Location (Optional):</label>
-                  <input type="text" name="location" className="form-input" />
-                </div>
-                <div className="form-group">
-                  <label>Status:</label>
-                  <select name="status" required className="form-input">
-                    <option value="">Select Status</option>
-                    <option value="Open">Open</option>
-                    <option value="Closed">Closed</option>
-                  </select>
-                </div>
-                <button type="submit" className="submit-button">Save</button>
-              </form>
+        <div className="popup-overlay">
+        <div className="popup-form">
+          <button onClick={handleCloseForm} className="close-button">&times;</button>
+          <h3>Create Job</h3>
+          <form onSubmit={handleFormSubmit} className="form-container">
+            <div className="form-row">
+              <div className="form-group">
+                <label>Job Title:</label>
+
+                <input type="text" name="title" required className="form-input" placeholder='Enter Job Title' />
+              </div>
+              <div className="form-group">
+                <label>Required Skills:</label>
+                <input type="text" name="skills" placeholder="Enter skills.. " className="form-input"/>
+              </div>
             </div>
-          </div>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Job Description:</label>
+                <textarea name="description" required className="form-input textarea" placeholder='Enter Description'></textarea>
+              </div>
+              <div className="form-group">
+                <label>Job Location :</label>
+                <input type="text" name="location" className="form-input" placeholder='Enter Job Location' />
+              </div>
+            </div>
+            <div className="form-group full-width">
+              <label>Upload Description (PDF/DOCX):</label>
+              <input type="file" accept=".pdf,.docx" className="form-input-file" />
+            </div>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Status:</label>
+                <select name="status" required className="form-input">
+                  <option value="">Select Status</option>
+                  <option value="Open">Open</option>
+                  <option value="Closed">Closed</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" className="submit-button">Save</button>
+          </form>
+        </div>
+      </div>
+      
+        
         )}
 
         {/* Search and Sort Section */}
