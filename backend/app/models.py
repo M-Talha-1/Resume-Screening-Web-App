@@ -1,81 +1,69 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Text, Float, JSON, DateTime, func
+from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey, Text, Boolean
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 from app.database import Base
 
 class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, nullable=False)
-    email = Column(String, unique=True, index=True, nullable=False)
-    role = Column(String, nullable=False)  # "admin", "hr", etc.
-    hashed_password = Column(String, nullable=False)
-    date_created = Column(DateTime, server_default=func.now())
+    email = Column(String, unique=True, index=True)
+    hashed_password = Column(String)
+    full_name = Column(String)
+    is_active = Column(Boolean, default=True)
+    is_superuser = Column(Boolean, default=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
-    job_descriptions = relationship("JobDescription", back_populates="admin")
-    evaluations = relationship("CandidateEvaluation", back_populates="hr_user")
+    jobs = relationship("Job", back_populates="owner")
+    resume_ratings = relationship("ResumeRating", back_populates="user")
 
-
-class Applicant(Base):
-    __tablename__ = "applicants"
+class Job(Base):
+    __tablename__ = "jobs"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, nullable=False)
-    email = Column(String, unique=True, nullable=False)
-    role = Column(String, nullable=False, default="Applicant")
-    date_created = Column(DateTime, server_default=func.now())
-    phone = Column(String, nullable=True)
-    skills = Column(JSON, nullable=True)
-    designation = Column(String, nullable=True)
-    total_experience = Column(Float, nullable=True)
+    title = Column(String, index=True)
+    description = Column(Text)
+    requirements = Column(Text)
+    location = Column(String)
+    salary_range = Column(String)
+    status = Column(String, default="active")  # active, closed, draft
+    owner_id = Column(Integer, ForeignKey("users.id"))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
-    resumes = relationship("Resume", back_populates="applicant", cascade="all, delete-orphan")
-
+    owner = relationship("User", back_populates="jobs")
+    resumes = relationship("Resume", back_populates="job")
 
 class Resume(Base):
     __tablename__ = "resumes"
 
     id = Column(Integer, primary_key=True, index=True)
-    applicant_id = Column(Integer, ForeignKey("applicants.id", ondelete="CASCADE"))
-    job_description_id = Column(Integer, ForeignKey("job_descriptions.id", ondelete="CASCADE"))
-    file_path = Column(String, nullable=False)
-    upload_date = Column(DateTime, server_default=func.now())
-    parsed_status = Column(String, nullable=False, default="Pending")
-    text_content = Column(Text, nullable=True)
+    file_path = Column(String)
+    file_name = Column(String)
+    file_type = Column(String)
+    parsed_text = Column(Text)
+    job_id = Column(Integer, ForeignKey("jobs.id"))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
-    applicant = relationship("Applicant", back_populates="resumes")
-    job = relationship("JobDescription", back_populates="resumes")
-    evaluation = relationship("CandidateEvaluation", back_populates="resume", cascade="all, delete-orphan")
+    job = relationship("Job", back_populates="resumes")
+    ratings = relationship("ResumeRating", back_populates="resume")
 
-
-class JobDescription(Base):
-    __tablename__ = "job_descriptions"
-
-    id = Column(Integer, primary_key=True, index=True)
-    admin_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"))  # FK now points to User
-    title = Column(String, nullable=False)
-    description = Column(Text, nullable=False)
-    required_skills = Column(JSON, nullable=True)
-    posted_date = Column(DateTime, server_default=func.now())
-    status = Column(String, nullable=False, default="Open")
-
-    admin = relationship("User", back_populates="job_descriptions")
-    resumes = relationship("Resume", back_populates="job", cascade="all, delete-orphan")
-    evaluations = relationship("CandidateEvaluation", back_populates="job", cascade="all, delete-orphan")
-
-
-class CandidateEvaluation(Base):
-    __tablename__ = "candidate_evaluations"
+class ResumeRating(Base):
+    __tablename__ = "resume_ratings"
 
     id = Column(Integer, primary_key=True, index=True)
-    resume_id = Column(Integer, ForeignKey("resumes.id", ondelete="CASCADE"))
-    job_id = Column(Integer, ForeignKey("job_descriptions.id", ondelete="CASCADE"))
-    hr_manager_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
-    suitability_score = Column(Float, nullable=False)
-    comments = Column(Text, nullable=True)
-    status = Column(String, nullable=False, default="Pending")
+    resume_id = Column(Integer, ForeignKey("resumes.id"))
+    user_id = Column(Integer, ForeignKey("users.id"))
+    overall_score = Column(Float)
+    skills_score = Column(Float)
+    experience_score = Column(Float)
+    education_score = Column(Float)
+    comments = Column(Text)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
-    resume = relationship("Resume", back_populates="evaluation")
-    job = relationship("JobDescription", back_populates="evaluations")
-    hr_user = relationship("User", back_populates="evaluations")
+    resume = relationship("Resume", back_populates="ratings")
+    user = relationship("User", back_populates="resume_ratings")
 
